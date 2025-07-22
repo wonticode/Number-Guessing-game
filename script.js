@@ -31,10 +31,10 @@ checkBtn.addEventListener("click", () => {
         checkBtn.disabled = true;
         inputHolder.disabled = true;
       } else if (isSlightlyHigher) {
-        textOutput.textContent = `The number is SLIGHTLY LOWER! 
+        textOutput.textContent = `Your guess is SLIGHTLY HIGHER! 
         Try again!`;
       } else if (isSlightlyLower) {
-        textOutput.textContent = `The number is SLIGHTLY HIGHER!
+        textOutput.textContent = `Your guess is SLIGHTLY LOWER!
          Try again!`;
       } else if (guess > randomNum) {
         textOutput.textContent = `Your guess is TOO HIGH! 
