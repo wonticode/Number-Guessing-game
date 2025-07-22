@@ -1,0 +1,78 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --text: #ffc15e;
+  --accent: #f7934c;
+}
+body {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--accent);
+  color: var(--text);
+  font-size: 2rem;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: start;
+  padding: 6rem 4rem;
+  background-color: white;
+  border-radius: 2em;
+  box-shadow: 0 10px 20px rgba(97, 58, 19, 0.2);
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.btn {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+}
+
+.btn:hover {
+  background-color: var(--text);
+}
+
+input {
+  margin-top: 2rem;
+  border-radius: 2rem;
+  padding: 2rem 1rem;
+  font-size: 1em;
+  text-align: center;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+}
+
+.container.answer {
+  margin-left: 2rem;
+  text-align: center;
+}
+.attempts {
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+.btn.reset {
+  display: none;
+}
+
+#inputLabel {
+  text-align: center;
+}
