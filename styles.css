@@ -76,3 +76,20 @@ input {
 #inputLabel {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+  .container {
+    min-width: 40%;
+    max-width: 90%;
+    padding: 2rem 5rem;
+    border-radius: 0.5em;
+  }
+  .container.answer {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
