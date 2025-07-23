@@ -103,8 +103,12 @@ input:focus {
   text-align: center;
 }
 
+input:focus {
+  box-shadow: 0 0 0 4px rgba(239, 131, 84, 0.8);
+}
+
 .attempts {
-  margin: 1rem 0;
+  margin: 2rem 0 1rem;
   font-weight: bold;
   text-align: center;
 }
