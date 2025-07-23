@@ -41,15 +41,22 @@
       textOutput.textContent = "Your guess is Correct!";
       checkBtn.disabled = true;
       inputHolder.disabled = true;
-    } else if (isSlightlyHigher) {
-      textOutput.textContent = "Your guess is SLIGHTLY HIGHER! Try again!";
-    } else if (isSlightlyLower) {
-      textOutput.textContent = "Your guess is SLIGHTLY LOWER! Try again!";
-    } else if (guess > randomNum) {
-      textOutput.textContent = "Your guess is TOO HIGH! Try again!";
-    } else {
-      textOutput.textContent = "Your guess is TOO LOW! Try again!";
-    }
+}   else {
+      if (isSlightlyHigher) {
+        textOutput.textContent = "Your guess is SLIGHTLY HIGHER! Try again!";
+  }   else if (isSlightlyLower) {
+        textOutput.textContent = "Your guess is SLIGHTLY LOWER! Try again!";
+  }   else if (guess > randomNum) {
+        textOutput.textContent = "Your guess is TOO HIGH! Try again!";
+  }   else {
+        textOutput.textContent = "Your guess is TOO LOW! Try again!";
+  }
+
+  // :P annoying? affecting? well, it'll be there!
+  textOutput.classList.add("shake");
+  setTimeout(() => textOutput.classList.remove("shake"), 400);
+}
+
 
     if (attempts >= 5 && guess !== randomNum) {
       textOutput.textContent = "TOO MANY ATTEMPTS! Reset?";
