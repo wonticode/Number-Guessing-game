@@ -71,3 +71,14 @@
     resetBtn.style.display = "none";
   });
 })();
+
+//light mode toggle btw (i use arch btw)
+const toggleButton = document.getElementById("toggleMode");
+let lightMode = false;
+
+toggleButton.addEventListener("click", () => {
+  document.documentElement.classList.toggle("light-mode");
+  lightMode = !lightMode;
+  toggleButton.textContent = lightMode ? "Toggle Dark Mode" : "Toggle Light Mode";
+});
+
