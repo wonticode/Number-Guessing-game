@@ -127,6 +127,19 @@ input:focus {
   text-align: center;
 }
 
+/*chromium based*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*firefox based*/
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
 @media (max-width: 600px) {
   body {
     flex-direction: column;
