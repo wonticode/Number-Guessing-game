@@ -1,3 +1,5 @@
+//improved slightly, fuck you bruteforcers.
+
 (() => {
   const inputHolder = document.getElementById("guessNum");
   const checkBtn = document.getElementById("checkNum");
@@ -7,7 +9,7 @@
 
   let attempts = 0;
   let randomNum = generateRandomNumber();
-  let guessedNums = new Set(); // NEW
+  let guessedNums = new Set();
 
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100 + 1);
@@ -26,7 +28,7 @@
       return;
     }
 
-    guessedNums.add(guess); // NEW
+    guessedNums.add(guess);
 
     attempts++;
     attemptsText.textContent = attempts;
@@ -60,7 +62,7 @@
   resetBtn.addEventListener("click", () => {
     randomNum = generateRandomNumber();
     attempts = 0;
-    guessedNums.clear(); // NEW: unlock all numbers
+    guessedNums.clear();
     inputHolder.value = "";
     attemptsText.textContent = attempts;
     textOutput.textContent = "";
