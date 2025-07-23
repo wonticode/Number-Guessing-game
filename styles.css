@@ -17,6 +17,15 @@
   --container-text: #2d3142;
 }
 
+.light-mode {
+  --bg: #fdf6ee;
+  --text: #2d3142;
+  --container-bg: #ffffff;
+  --container-text: #2d3142;
+  --input-bg: #e6e6e6;
+  --input-text: #2d3142;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -115,6 +124,7 @@ input:focus {
 
 .container.answer {
   margin-top: 2rem;
+  margin-left: 2rem;
   text-align: center;
 }
 
@@ -131,6 +141,10 @@ input:focus {
     width: 90%;
   }
 
+  .container.answer {
+    margin-left: 0;
+  }
+  
   input {
     padding: 0.75rem;
     font-size: 1rem;
