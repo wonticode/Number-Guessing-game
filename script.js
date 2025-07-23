@@ -7,6 +7,7 @@
 
   let attempts = 0;
   let randomNum = generateRandomNumber();
+  let guessedNums = new Set(); // NEW
 
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100 + 1);
@@ -19,6 +20,13 @@
       textOutput.textContent = "Please enter a number between 1 to 100.";
       return;
     }
+
+    if (guessedNums.has(guess)) {
+      textOutput.textContent = `You've already guessed ${guess}. Try a different number.`;
+      return;
+    }
+
+    guessedNums.add(guess); // NEW
 
     attempts++;
     attemptsText.textContent = attempts;
@@ -50,8 +58,9 @@
   });
 
   resetBtn.addEventListener("click", () => {
-    randomNum = generateRandomNumber(); // Generate new secret number
+    randomNum = generateRandomNumber();
     attempts = 0;
+    guessedNums.clear(); // NEW: unlock all numbers
     inputHolder.value = "";
     attemptsText.textContent = attempts;
     textOutput.textContent = "";
