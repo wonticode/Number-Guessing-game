@@ -1,25 +1,30 @@
-//improved slightly, fuck you bruteforcers.
+// if someone ever wants to fork this project, please add to the counter below
+// total_time_wasted = 3 hours
+
+import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from './config.js';
 
 (() => {
-  const inputHolder = document.getElementById("guessNum");
-  const checkBtn = document.getElementById("checkNum");
-  const resetBtn = document.getElementById("reset");
-  const textOutput = document.getElementById("resultDesc");
-  const attemptsText = document.getElementById("attempts");
+  const inputHolder = document.getElementById(UI_IDS.input);
+  const checkBtn = document.getElementById(UI_IDS.checkBtn);
+  const resetBtn = document.getElementById(UI_IDS.resetBtn);
+  const textOutput = document.getElementById(UI_IDS.resultText);
+  const attemptsText = document.getElementById(UI_IDS.attemptsText);
 
   let attempts = 0;
   let randomNum = generateRandomNumber();
   let guessedNums = new Set();
 
   function generateRandomNumber() {
-    return Math.floor(Math.random() * 100 + 1);
+    const { MIN_NUMBER, MAX_NUMBER } = GAME_CONFIG;
+    return Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) + MIN_NUMBER;
   }
 
   checkBtn.addEventListener("click", () => {
     const guess = Number(inputHolder.value);
+    const { MIN_NUMBER, MAX_NUMBER, MAX_ATTEMPTS, SLIGHT_MARGIN } = GAME_CONFIG;
 
-    if (guess > 100 || guess < 1 || isNaN(guess)) {
-      textOutput.textContent = "Please enter a number between 1 to 100.";
+    if (guess < MIN_NUMBER || guess > MAX_NUMBER || isNaN(guess)) {
+      textOutput.textContent = `Please enter a number between ${MIN_NUMBER} and ${MAX_NUMBER}.`;
       return;
     }
 
@@ -29,36 +34,33 @@
     }
 
     guessedNums.add(guess);
-
     attempts++;
     attemptsText.textContent = attempts;
 
     const diff = randomNum - guess;
-    const isSlightlyHigher = diff < 0 && Math.abs(diff) <= 10;
-    const isSlightlyLower = diff > 0 && Math.abs(diff) <= 10;
+    const isSlightlyHigher = diff < 0 && Math.abs(diff) <= SLIGHT_MARGIN;
+    const isSlightlyLower = diff > 0 && Math.abs(diff) <= SLIGHT_MARGIN;
 
     if (guess === randomNum) {
       textOutput.textContent = "Your guess is Correct!";
       checkBtn.disabled = true;
       inputHolder.disabled = true;
-}   else {
+    } else {
       if (isSlightlyHigher) {
         textOutput.textContent = "Your guess is SLIGHTLY HIGHER! Try again!";
-  }   else if (isSlightlyLower) {
+      } else if (isSlightlyLower) {
         textOutput.textContent = "Your guess is SLIGHTLY LOWER! Try again!";
-  }   else if (guess > randomNum) {
+      } else if (guess > randomNum) {
         textOutput.textContent = "Your guess is TOO HIGH! Try again!";
-  }   else {
+      } else {
         textOutput.textContent = "Your guess is TOO LOW! Try again!";
-  }
+      }
 
-  // :P annoying? affecting? well, it'll be there!
-  textOutput.classList.add("shake");
-  setTimeout(() => textOutput.classList.remove("shake"), 400);
-}
+      textOutput.classList.add(CSS_CLASSES.shakeEffect);
+      setTimeout(() => textOutput.classList.remove(CSS_CLASSES.shakeEffect), 400);
+    }
 
-
-    if (attempts >= 5 && guess !== randomNum) {
+    if (attempts >= MAX_ATTEMPTS && guess !== randomNum) {
       textOutput.textContent = "TOO MANY ATTEMPTS! Reset?";
       checkBtn.disabled = true;
       inputHolder.disabled = true;
@@ -79,13 +81,12 @@
   });
 })();
 
-//light mode toggle btw (i use arch btw)
-const toggleButton = document.getElementById("toggleMode");
+// light mode toggle
+const toggleButton = document.getElementById(UI_IDS.toggleBtn);
 let lightMode = false;
 
 toggleButton.addEventListener("click", () => {
-  document.documentElement.classList.toggle("light-mode");
+  document.documentElement.classList.toggle(CSS_CLASSES.lightMode);
   lightMode = !lightMode;
   toggleButton.textContent = lightMode ? "Toggle Dark Mode" : "Toggle Light Mode";
 });
-
