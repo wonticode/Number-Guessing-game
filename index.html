@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Guessing game</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body>
+  <body id="body">
+    <i class="fa-solid fa-moon" id="dark-mode" title="Switch to dark mode"></i>
+    <i class="fa-solid fa-sun" id="light-mode" title="Switch to light mode"></i>
     <div class="container">
       <label for="guessNum" id="inputLabel">
         Guess a number between <br />
@@ -14,7 +23,6 @@
       </label>
       <input type="number" id="guessNum" />
       <button class="btn" id="checkNum">Check</button>
-      <button id="toggleMode" class="btn">Toggle Light Mode</button>
     </div>
     <div class="container answer">
       <p class="attempts">Attempts: <span id="attempts">0</span></p>

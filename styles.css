@@ -7,25 +7,31 @@
 }
 
 :root {
-  --bg: #2d3142;
-  --text: #fdf6ee;
-  --accent: #ef8354;
-  --secondary: #4f5d75;
-  --input-bg: #4f5d75;
-  --input-text: #fdf6ee; 
-  --container-bg: #fdf6ee; 
-  --container-text: #2d3142;
-}
-
-.light-mode {
   --bg: #fdf6ee;
   --text: #2d3142;
+  --accent: #ef8354;
   --container-bg: #ffffff;
   --container-text: #2d3142;
   --input-bg: #e6e6e6;
   --input-text: #2d3142;
 }
 
+.darkmode {
+  --bg: #2d3142;
+  --text: #fdf6ee;
+  --secondary: #4f5d75;
+  --input-bg: #4f5d75;
+  --input-text: #fdf6ee;
+  --container-bg: #fdf6ee;
+  --container-text: #2d3142;
+}
+
+#dark-mode {
+  display: inline-block;
+}
+#light-mode {
+  display: none;
+}
 body {
   display: flex;
   justify-content: center;
@@ -105,6 +111,27 @@ input:focus {
   background-color: #3c475e;
 }
 
+.btn.toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* light and dark mode */
+[class*="fa-"] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: var(--accent);
+  font-size: 2em;
+  margin: 1rem;
+  transition: 0.3s ease;
+}
+[class*="fa-"]:hover {
+  transform: scale(1.2);
+  color: var(--icons-dark);
+}
+
 #inputLabel {
   margin-top: 1.5rem;
   font-weight: bold;
@@ -139,16 +166,17 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
 @media (max-width: 600px) {
   body {
+    align-items: center;
+    min-height: 80vh;
     flex-direction: column;
     padding: 2rem;
     font-size: 1rem;
   }
 
   .container {
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1em;
     width: 90%;
   }
@@ -156,7 +184,7 @@ input[type="number"] {
   .container.answer {
     margin-left: 0;
   }
-  
+
   input {
     padding: 0.75rem;
     font-size: 1rem;
@@ -165,20 +193,32 @@ input[type="number"] {
   .btn {
     font-size: 1rem;
     padding: 0.6rem 1.5rem;
+    margin-top: 0.5rem;
   }
 }
 
 /* well... :) */
 @keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-6px); }
-  80% { transform: translateX(6px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .shake {
   animation: shake 0.4s ease-in-out;
 }
-

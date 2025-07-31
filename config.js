@@ -5,7 +5,7 @@ export const GAME_CONFIG = {
   MIN_NUMBER: 1,
   MAX_NUMBER: 100,
   MAX_ATTEMPTS: 5,
-  SLIGHT_MARGIN: 10
+  SLIGHT_MARGIN: 10,
 };
 
 // element ids stuff
@@ -15,12 +15,9 @@ export const UI_IDS = {
   resetBtn: "reset",
   resultText: "resultDesc",
   attemptsText: "attempts",
-  toggleBtn: "toggleMode"
 };
 
 // css stuff
 export const CSS_CLASSES = {
-  lightMode: "light-mode",
-  shakeEffect: "shake"
+  shakeEffect: "shake",
 };
-

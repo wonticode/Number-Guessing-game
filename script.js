@@ -1,7 +1,7 @@
 // if someone ever wants to fork this project, please add to the counter below
 // total_time_wasted = 3 hours
 
-import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from './config.js';
+import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from "./config.js";
 
 (() => {
   const inputHolder = document.getElementById(UI_IDS.input);
@@ -16,7 +16,9 @@ import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from './config.js';
 
   function generateRandomNumber() {
     const { MIN_NUMBER, MAX_NUMBER } = GAME_CONFIG;
-    return Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) + MIN_NUMBER;
+    return (
+      Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) + MIN_NUMBER
+    );
   }
 
   checkBtn.addEventListener("click", () => {
@@ -57,7 +59,10 @@ import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from './config.js';
       }
 
       textOutput.classList.add(CSS_CLASSES.shakeEffect);
-      setTimeout(() => textOutput.classList.remove(CSS_CLASSES.shakeEffect), 400);
+      setTimeout(
+        () => textOutput.classList.remove(CSS_CLASSES.shakeEffect),
+        400
+      );
     }
 
     if (attempts >= MAX_ATTEMPTS && guess !== randomNum) {
@@ -82,11 +87,16 @@ import { GAME_CONFIG, UI_IDS, CSS_CLASSES } from './config.js';
 })();
 
 // light mode toggle
-const toggleButton = document.getElementById(UI_IDS.toggleBtn);
-let lightMode = false;
+const lightMode = document.getElementById("light-mode");
+const darkMode = document.getElementById("dark-mode");
+darkMode.addEventListener("click", () => {
+  lightMode.style.setProperty("display", "inline-block");
+  darkMode.style.setProperty("display", "none");
+  document.getElementById("body").className = "darkmode";
+});
 
-toggleButton.addEventListener("click", () => {
-  document.documentElement.classList.toggle(CSS_CLASSES.lightMode);
-  lightMode = !lightMode;
-  toggleButton.textContent = lightMode ? "Toggle Dark Mode" : "Toggle Light Mode";
+lightMode.addEventListener("click", () => {
+  lightMode.style.setProperty("display", "none");
+  darkMode.style.setProperty("display", "inline-block");
+  document.getElementById("body").className = " ";
 });
